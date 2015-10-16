@@ -1,9 +1,9 @@
-import random
+from random import randint
 
 max_length = 8
 
-class chromosome():
-    genome = (0,) * max_length
+class bitarray_chromosome():
+    genome = [0] * max_length
     
     def __init__(self, genes = ()):
         l = len(self.genome)
@@ -12,5 +12,23 @@ class chromosome():
     def fitness(self):
         return sum(self.genome) 
         
-def random_chromosome():
-    return chromosome(tuple(random.randint(0, 1) for i in range(max_length)))
+    def mutate(self):
+        index = randint(0, max_length)
+        self.genome[index] ^= 1
+        return self
+
+    def __repr__(self):
+        return "bitarray_chromosome([" + ", ".join([str(i) for i in self.genome])+"]" + ")"
+
+    def __add__(self, other):
+        try:
+            if (len(self.genome) != len(other.genome)):
+                return NotImplemented
+        # one-point crossover
+            index = randint(0, max_length)
+            return bitarray_chromosome(self.genome[:index] + other.genome[index:])
+        except AttributeError:
+            return NotImplemented
+        
+def random_bitarray_chromosome():
+    return bitarray_chromosome([randint(0, 1) for i in range(max_length)])
