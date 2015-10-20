@@ -2,12 +2,18 @@ import random
 
 class population():
     pop = []
+    population_mutation_rate = 0.1
+    chromosome_mutation_rate = 0.1
     
     def __init__(self, size, generator):
         self.pop = [generator() for i in range(size)]
         
     def select_two_members(self):
         return random.sample(self.pop, 2)
+        
+    def maybe_mutate(self):
+        if random.random() < self.population_mutation_rate:
+            random.sample(self.pop, 1).mutate()
     
     def run_once(self):
         "Run one iteration of the genetic algorithm"
@@ -17,10 +23,11 @@ class population():
             a, b = self.select_two_members()
             new_pop.append(a + b)
         self.pop = new_pop
+        self.maybe_mutate()
         
     def run_generations(self, n):
         for i in range(n):
-            run_once()
+            self.run_once()
             
     def statistics(self):
-        print("{0} members, of type {1}, with maximum fitness {2}".format(len(self.pop), type(self.pop[0]), max([c.fitness() for c in self.pop])))
+        print("{0} members, with maximum fitness {2}".format(len(self.pop), max([c.fitness() for c in self.pop])))

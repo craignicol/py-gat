@@ -24,3 +24,4 @@ def test_run_once_changes_the_population():
     assert(len(after) == len(before) == 2)
     assert(after[0] != before[0])
     assert(after[1] != before[1])
+    
