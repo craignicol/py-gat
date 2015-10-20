@@ -2,8 +2,9 @@ import random
 
 class population():
     pop = []
-    population_mutation_rate = 0.1
+    population_mutation_rate = 0.01
     chromosome_mutation_rate = 0.1
+    crossover_rate = 0.2
     
     def __init__(self, size, generator):
         self.pop = [generator() for i in range(size)]
@@ -13,7 +14,7 @@ class population():
         
     def maybe_mutate(self):
         if random.random() < self.population_mutation_rate:
-            random.sample(self.pop, 1).mutate()
+            random.sample(self.pop, 1)[0].mutate()
     
     def run_once(self):
         "Run one iteration of the genetic algorithm"
@@ -30,4 +31,5 @@ class population():
             self.run_once()
             
     def statistics(self):
-        print("{0} members, with maximum fitness {2}".format(len(self.pop), max([c.fitness() for c in self.pop])))
+        print("{0} members, with maximum fitness {1}".format(len(self.pop), max([c.fitness() for c in self.pop])))
+        
