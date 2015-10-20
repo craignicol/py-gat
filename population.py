@@ -17,3 +17,10 @@ class population():
             a, b = self.select_two_members()
             new_pop.append(a + b)
         self.pop = new_pop
+        
+    def run_generations(self, n):
+        for i in range(n):
+            run_once()
+            
+    def statistics(self):
+        print("{0} members, of type {1}, with maximum fitness {2}".format(len(self.pop), type(self.pop[0]), max([c.fitness() for c in self.pop])))
