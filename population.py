@@ -30,6 +30,9 @@ class population():
         for i in range(n):
             self.run_once()
             
+    def print_pop(self):
+        print("\n".join([str(c) for c in self.pop]))
+            
     def statistics(self):
         print("{0} members, with maximum fitness {1}".format(len(self.pop), max([c.fitness() for c in self.pop])))
         
