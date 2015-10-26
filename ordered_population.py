@@ -5,12 +5,12 @@ from math import floor
 class ordered_population(population):
     def select_by_rank(self):
         # assumes sorted list, with highest fitness at the end
-        max_i = len(self.pop) - 1
-        index = floor(
+        max_i = len(self.pop)
+        rand_i = floor(
             randint(0, max_i ** (1.0/self.crossover_rate))
             ** self.crossover_rate
             )
-        return self.pop[index]
+        return self.pop[min(rand_i, max_i-1)]
     
     def select_two_members(self):
         # assumes sorted list, with highest fitness at the end
