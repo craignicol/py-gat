@@ -5,7 +5,7 @@ from math import floor
 class ordered_population(population):
     def select_by_rank(self):
         # assumes sorted list, with highest fitness at the end
-        max_i = len(self.pop)
+        max_i = len(self.pop) - 1
         index = floor(
             randint(0, max_i ** (1.0/self.crossover_rate))
             ** self.crossover_rate

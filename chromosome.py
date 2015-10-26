@@ -13,7 +13,7 @@ class bitarray_chromosome():
         return sum(self.genome) 
         
     def mutate(self):
-        index = randint(0, max_length)
+        index = randint(0, max_length-1)
         self.genome[index] ^= 1
         return self
 
