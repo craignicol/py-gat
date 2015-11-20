@@ -34,5 +34,5 @@ class population():
         print("\n".join([str(c) for c in self.pop]))
             
     def statistics(self):
-        print("{0} members, with maximum fitness {1}".format(len(self.pop), max([c.fitness() for c in self.pop])))
+        print("{0} members, with minimum fitness {1}".format(len(self.pop), min([c.fitness() for c in self.pop])))
         

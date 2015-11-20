@@ -1,4 +1,4 @@
-from chromosome import bitarray_chromosome, random_bitarray_chromosome
+from chromosome import bitarray_chromosome, random_bitarray_chromosome, dj1_chromosome
 import pytest
 
 def test_initialiser_correct_length():
@@ -26,6 +26,10 @@ def test_fitness():
     assert(bitarray_chromosome([0, 0, 1, 1, 1, 1, 1, 1]).fitness() == 2)
     assert(bitarray_chromosome([1, 1, 1, 1, 1, 0, 1, 1]).fitness() == 1)
     assert(bitarray_chromosome([1, 1, 1, 1, 1, 1, 1, 1]).fitness() == 0)
+    
+def test_dj1_fitness():
+    assert(dj1_chromosome([0, 0, 0, 0, 0, 0, 0, 0]).fitness() > 0)
+    assert(dj1_chromosome([1, 1, 1, 1, 1, 1, 1, 1]).fitness() > 0)
     
 def test_random_chromosome():
     assert(0 <= max([random_bitarray_chromosome().fitness() for i in range(1000)]) <= 8)
