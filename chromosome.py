@@ -10,7 +10,7 @@ class bitarray_chromosome():
         self.genome = genes[0:l] + self.genome[len(genes):]
     
     def fitness(self):
-        return sum(self.genome) 
+        return max_length-sum(self.genome) 
         
     def mutate(self):
         index = randint(0, max_length-1)
@@ -32,3 +32,6 @@ class bitarray_chromosome():
         
 def random_bitarray_chromosome():
     return bitarray_chromosome([randint(0, 1) for i in range(max_length)])
+    
+def dj1_chromosome(bitarray_chromosome):
+    pass

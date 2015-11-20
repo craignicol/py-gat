@@ -18,6 +18,6 @@ class ordered_population(population):
     
     def run_once(self):
         # Note, this super() formulation is Python3 only
-        self.pop = sorted(self.pop, key = lambda c : c.fitness())
+        self.pop = sorted(self.pop, key = lambda c : c.fitness(), reverse=True)
         super().run_once()
-        self.pop = sorted(self.pop, key = lambda c : c.fitness())        
+        self.pop = sorted(self.pop, key = lambda c : c.fitness(), reverse=True)        
